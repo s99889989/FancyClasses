@@ -1,0 +1,6 @@
+name: FancyClasses
+version: @version@
+main: com.daxton.fancyclasses.FancyClasses
+api-version: 1.17
+prefix: FancyClasses
+authors: [ s99889989 ]

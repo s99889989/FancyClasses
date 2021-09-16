@@ -1,0 +1,7 @@
+Class_Name: '魔法師'
+Level:
+- 'job'
+- 'job1'
+Skills:
+- Novice_Novice
+- Magician_Magician

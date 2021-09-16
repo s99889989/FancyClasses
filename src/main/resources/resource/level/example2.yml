@@ -1,0 +1,904 @@
+level:
+  '0':
+    exp: 100
+    points: 1
+  '1':
+    exp: 200
+    points: 1
+  '2':
+    exp: 300
+    points: 1
+  '3':
+    exp: 400
+    points: 1
+  '4':
+    exp: 500
+    points: 1
+  '5':
+    exp: 600
+    points: 1
+  '6':
+    exp: 700
+    points: 1
+  '7':
+    exp: 800
+    points: 1
+  '8':
+    exp: 900
+    points: 1
+  '9':
+    exp: 1000
+    points: 1
+  '10':
+    exp: 1100
+    points: 1
+  '11':
+    exp: 1200
+    points: 1
+  '12':
+    exp: 1300
+    points: 1
+  '13':
+    exp: 1400
+    points: 1
+  '14':
+    exp: 1500
+    points: 1
+  '15':
+    exp: 1600
+    points: 1
+  '16':
+    exp: 1700
+    points: 1
+  '17':
+    exp: 1800
+    points: 1
+  '18':
+    exp: 1900
+    points: 1
+  '19':
+    exp: 2000
+    points: 1
+  '20':
+    exp: 2100
+    points: 1
+  '21':
+    exp: 2200
+    points: 1
+  '22':
+    exp: 2300
+    points: 1
+  '23':
+    exp: 2400
+    points: 1
+  '24':
+    exp: 2500
+    points: 1
+  '25':
+    exp: 2600
+    points: 1
+  '26':
+    exp: 2700
+    points: 1
+  '27':
+    exp: 2800
+    points: 1
+  '28':
+    exp: 2900
+    points: 1
+  '29':
+    exp: 3000
+    points: 1
+  '30':
+    exp: 3100
+    points: 1
+  '31':
+    exp: 3200
+    points: 1
+  '32':
+    exp: 3300
+    points: 1
+  '33':
+    exp: 3400
+    points: 1
+  '34':
+    exp: 3500
+    points: 1
+  '35':
+    exp: 3600
+    points: 1
+  '36':
+    exp: 3700
+    points: 1
+  '37':
+    exp: 3800
+    points: 1
+  '38':
+    exp: 3900
+    points: 1
+  '39':
+    exp: 4000
+    points: 1
+  '40':
+    exp: 4100
+    points: 1
+  '41':
+    exp: 4200
+    points: 1
+  '42':
+    exp: 4300
+    points: 1
+  '43':
+    exp: 4400
+    points: 1
+  '44':
+    exp: 4500
+    points: 1
+  '45':
+    exp: 4600
+    points: 1
+  '46':
+    exp: 4700
+    points: 1
+  '47':
+    exp: 4800
+    points: 1
+  '48':
+    exp: 4900
+    points: 1
+  '49':
+    exp: 5000
+    points: 1
+  '50':
+    exp: 5100
+    points: 1
+  '51':
+    exp: 5200
+    points: 1
+  '52':
+    exp: 5300
+    points: 1
+  '53':
+    exp: 5400
+    points: 1
+  '54':
+    exp: 5500
+    points: 1
+  '55':
+    exp: 5600
+    points: 1
+  '56':
+    exp: 5700
+    points: 1
+  '57':
+    exp: 5800
+    points: 1
+  '58':
+    exp: 5900
+    points: 1
+  '59':
+    exp: 6000
+    points: 1
+  '60':
+    exp: 6100
+    points: 1
+  '61':
+    exp: 6200
+    points: 1
+  '62':
+    exp: 6300
+    points: 1
+  '63':
+    exp: 6400
+    points: 1
+  '64':
+    exp: 6500
+    points: 1
+  '65':
+    exp: 6600
+    points: 1
+  '66':
+    exp: 6700
+    points: 1
+  '67':
+    exp: 6800
+    points: 1
+  '68':
+    exp: 6900
+    points: 1
+  '69':
+    exp: 7000
+    points: 1
+  '70':
+    exp: 7100
+    points: 1
+  '71':
+    exp: 7200
+    points: 1
+  '72':
+    exp: 7300
+    points: 1
+  '73':
+    exp: 7400
+    points: 1
+  '74':
+    exp: 7500
+    points: 1
+  '75':
+    exp: 7600
+    points: 1
+  '76':
+    exp: 7700
+    points: 1
+  '77':
+    exp: 7800
+    points: 1
+  '78':
+    exp: 7900
+    points: 1
+  '79':
+    exp: 8000
+    points: 1
+  '80':
+    exp: 8100
+    points: 1
+  '81':
+    exp: 8200
+    points: 1
+  '82':
+    exp: 8300
+    points: 1
+  '83':
+    exp: 8400
+    points: 1
+  '84':
+    exp: 8500
+    points: 1
+  '85':
+    exp: 8600
+    points: 1
+  '86':
+    exp: 8700
+    points: 1
+  '87':
+    exp: 8800
+    points: 1
+  '88':
+    exp: 8900
+    points: 1
+  '89':
+    exp: 9000
+    points: 1
+  '90':
+    exp: 9100
+    points: 1
+  '91':
+    exp: 9200
+    points: 1
+  '92':
+    exp: 9300
+    points: 1
+  '93':
+    exp: 9400
+    points: 1
+  '94':
+    exp: 9500
+    points: 1
+  '95':
+    exp: 9600
+    points: 1
+  '96':
+    exp: 9700
+    points: 1
+  '97':
+    exp: 9800
+    points: 1
+  '98':
+    exp: 9900
+    points: 1
+  '99':
+    exp: 10000
+    points: 1
+  '100':
+    exp: 10100
+    points: 1
+  '101':
+    exp: 10200
+    points: 1
+  '102':
+    exp: 10300
+    points: 1
+  '103':
+    exp: 10400
+    points: 1
+  '104':
+    exp: 10500
+    points: 1
+  '105':
+    exp: 10600
+    points: 1
+  '106':
+    exp: 10700
+    points: 1
+  '107':
+    exp: 10800
+    points: 1
+  '108':
+    exp: 10900
+    points: 1
+  '109':
+    exp: 11000
+    points: 1
+  '110':
+    exp: 11100
+    points: 1
+  '111':
+    exp: 11200
+    points: 1
+  '112':
+    exp: 11300
+    points: 1
+  '113':
+    exp: 11400
+    points: 1
+  '114':
+    exp: 11500
+    points: 1
+  '115':
+    exp: 11600
+    points: 1
+  '116':
+    exp: 11700
+    points: 1
+  '117':
+    exp: 11800
+    points: 1
+  '118':
+    exp: 11900
+    points: 1
+  '119':
+    exp: 12000
+    points: 1
+  '120':
+    exp: 12100
+    points: 1
+  '121':
+    exp: 12200
+    points: 1
+  '122':
+    exp: 12300
+    points: 1
+  '123':
+    exp: 12400
+    points: 1
+  '124':
+    exp: 12500
+    points: 1
+  '125':
+    exp: 12600
+    points: 1
+  '126':
+    exp: 12700
+    points: 1
+  '127':
+    exp: 12800
+    points: 1
+  '128':
+    exp: 12900
+    points: 1
+  '129':
+    exp: 13000
+    points: 1
+  '130':
+    exp: 13100
+    points: 1
+  '131':
+    exp: 13200
+    points: 1
+  '132':
+    exp: 13300
+    points: 1
+  '133':
+    exp: 13400
+    points: 1
+  '134':
+    exp: 13500
+    points: 1
+  '135':
+    exp: 13600
+    points: 1
+  '136':
+    exp: 13700
+    points: 1
+  '137':
+    exp: 13800
+    points: 1
+  '138':
+    exp: 13900
+    points: 1
+  '139':
+    exp: 14000
+    points: 1
+  '140':
+    exp: 14100
+    points: 1
+  '141':
+    exp: 14200
+    points: 1
+  '142':
+    exp: 14300
+    points: 1
+  '143':
+    exp: 14400
+    points: 1
+  '144':
+    exp: 14500
+    points: 1
+  '145':
+    exp: 14600
+    points: 1
+  '146':
+    exp: 14700
+    points: 1
+  '147':
+    exp: 14800
+    points: 1
+  '148':
+    exp: 14900
+    points: 1
+  '149':
+    exp: 15000
+    points: 1
+  '150':
+    exp: 15100
+    points: 1
+  '151':
+    exp: 15200
+    points: 1
+  '152':
+    exp: 15300
+    points: 1
+  '153':
+    exp: 15400
+    points: 1
+  '154':
+    exp: 15500
+    points: 1
+  '155':
+    exp: 15600
+    points: 1
+  '156':
+    exp: 15700
+    points: 1
+  '157':
+    exp: 15800
+    points: 1
+  '158':
+    exp: 15900
+    points: 1
+  '159':
+    exp: 16000
+    points: 1
+  '160':
+    exp: 16100
+    points: 1
+  '161':
+    exp: 16200
+    points: 1
+  '162':
+    exp: 16300
+    points: 1
+  '163':
+    exp: 16400
+    points: 1
+  '164':
+    exp: 16500
+    points: 1
+  '165':
+    exp: 16600
+    points: 1
+  '166':
+    exp: 16700
+    points: 1
+  '167':
+    exp: 16800
+    points: 1
+  '168':
+    exp: 16900
+    points: 1
+  '169':
+    exp: 17000
+    points: 1
+  '170':
+    exp: 17100
+    points: 1
+  '171':
+    exp: 17200
+    points: 1
+  '172':
+    exp: 17300
+    points: 1
+  '173':
+    exp: 17400
+    points: 1
+  '174':
+    exp: 17500
+    points: 1
+  '175':
+    exp: 17600
+    points: 1
+  '176':
+    exp: 17700
+    points: 1
+  '177':
+    exp: 17800
+    points: 1
+  '178':
+    exp: 17900
+    points: 1
+  '179':
+    exp: 18000
+    points: 1
+  '180':
+    exp: 18100
+    points: 1
+  '181':
+    exp: 18200
+    points: 1
+  '182':
+    exp: 18300
+    points: 1
+  '183':
+    exp: 18400
+    points: 1
+  '184':
+    exp: 18500
+    points: 1
+  '185':
+    exp: 18600
+    points: 1
+  '186':
+    exp: 18700
+    points: 1
+  '187':
+    exp: 18800
+    points: 1
+  '188':
+    exp: 18900
+    points: 1
+  '189':
+    exp: 19000
+    points: 1
+  '190':
+    exp: 19100
+    points: 1
+  '191':
+    exp: 19200
+    points: 1
+  '192':
+    exp: 19300
+    points: 1
+  '193':
+    exp: 19400
+    points: 1
+  '194':
+    exp: 19500
+    points: 1
+  '195':
+    exp: 19600
+    points: 1
+  '196':
+    exp: 19700
+    points: 1
+  '197':
+    exp: 19800
+    points: 1
+  '198':
+    exp: 19900
+    points: 1
+  '199':
+    exp: 20000
+    points: 1
+  '200':
+    exp: 20100
+    points: 1
+  '201':
+    exp: 20200
+    points: 1
+  '202':
+    exp: 20300
+    points: 1
+  '203':
+    exp: 20400
+    points: 1
+  '204':
+    exp: 20500
+    points: 1
+  '205':
+    exp: 20600
+    points: 1
+  '206':
+    exp: 20700
+    points: 1
+  '207':
+    exp: 20800
+    points: 1
+  '208':
+    exp: 20900
+    points: 1
+  '209':
+    exp: 21000
+    points: 1
+  '210':
+    exp: 21100
+    points: 1
+  '211':
+    exp: 21200
+    points: 1
+  '212':
+    exp: 21300
+    points: 1
+  '213':
+    exp: 21400
+    points: 1
+  '214':
+    exp: 21500
+    points: 1
+  '215':
+    exp: 21600
+    points: 1
+  '216':
+    exp: 21700
+    points: 1
+  '217':
+    exp: 21800
+    points: 1
+  '218':
+    exp: 21900
+    points: 1
+  '219':
+    exp: 22000
+    points: 1
+  '220':
+    exp: 22100
+    points: 1
+  '221':
+    exp: 22200
+    points: 1
+  '222':
+    exp: 22300
+    points: 1
+  '223':
+    exp: 22400
+    points: 1
+  '224':
+    exp: 22500
+    points: 1
+  '225':
+    exp: 22600
+    points: 1
+  '226':
+    exp: 22700
+    points: 1
+  '227':
+    exp: 22800
+    points: 1
+  '228':
+    exp: 22900
+    points: 1
+  '229':
+    exp: 23000
+    points: 1
+  '230':
+    exp: 23100
+    points: 1
+  '231':
+    exp: 23200
+    points: 1
+  '232':
+    exp: 23300
+    points: 1
+  '233':
+    exp: 23400
+    points: 1
+  '234':
+    exp: 23500
+    points: 1
+  '235':
+    exp: 23600
+    points: 1
+  '236':
+    exp: 23700
+    points: 1
+  '237':
+    exp: 23800
+    points: 1
+  '238':
+    exp: 23900
+    points: 1
+  '239':
+    exp: 24000
+    points: 1
+  '240':
+    exp: 24100
+    points: 1
+  '241':
+    exp: 24200
+    points: 1
+  '242':
+    exp: 24300
+    points: 1
+  '243':
+    exp: 24400
+    points: 1
+  '244':
+    exp: 24500
+    points: 1
+  '245':
+    exp: 24600
+    points: 1
+  '246':
+    exp: 24700
+    points: 1
+  '247':
+    exp: 24800
+    points: 1
+  '248':
+    exp: 24900
+    points: 1
+  '249':
+    exp: 25000
+    points: 1
+  '250':
+    exp: 25100
+    points: 1
+  '251':
+    exp: 25200
+    points: 1
+  '252':
+    exp: 25300
+    points: 1
+  '253':
+    exp: 25400
+    points: 1
+  '254':
+    exp: 25500
+    points: 1
+  '255':
+    exp: 25600
+    points: 1
+  '256':
+    exp: 25700
+    points: 1
+  '257':
+    exp: 25800
+    points: 1
+  '258':
+    exp: 25900
+    points: 1
+  '259':
+    exp: 26000
+    points: 1
+  '260':
+    exp: 26100
+    points: 1
+  '261':
+    exp: 26200
+    points: 1
+  '262':
+    exp: 26300
+    points: 1
+  '263':
+    exp: 26400
+    points: 1
+  '264':
+    exp: 26500
+    points: 1
+  '265':
+    exp: 26600
+    points: 1
+  '266':
+    exp: 26700
+    points: 1
+  '267':
+    exp: 26800
+    points: 1
+  '268':
+    exp: 26900
+    points: 1
+  '269':
+    exp: 27000
+    points: 1
+  '270':
+    exp: 27100
+    points: 1
+  '271':
+    exp: 27200
+    points: 1
+  '272':
+    exp: 27300
+    points: 1
+  '273':
+    exp: 27400
+    points: 1
+  '274':
+    exp: 27500
+    points: 1
+  '275':
+    exp: 27600
+    points: 1
+  '276':
+    exp: 27700
+    points: 1
+  '277':
+    exp: 27800
+    points: 1
+  '278':
+    exp: 27900
+    points: 1
+  '279':
+    exp: 28000
+    points: 1
+  '280':
+    exp: 28100
+    points: 1
+  '281':
+    exp: 28200
+    points: 1
+  '282':
+    exp: 28300
+    points: 1
+  '283':
+    exp: 28400
+    points: 1
+  '284':
+    exp: 28500
+    points: 1
+  '285':
+    exp: 28600
+    points: 1
+  '286':
+    exp: 28700
+    points: 1
+  '287':
+    exp: 28800
+    points: 1
+  '288':
+    exp: 28900
+    points: 1
+  '289':
+    exp: 29000
+    points: 1
+  '290':
+    exp: 29100
+    points: 1
+  '291':
+    exp: 29200
+    points: 1
+  '292':
+    exp: 29300
+    points: 1
+  '293':
+    exp: 29400
+    points: 1
+  '294':
+    exp: 29500
+    points: 1
+  '295':
+    exp: 29600
+    points: 1
+  '296':
+    exp: 29700
+    points: 1
+  '297':
+    exp: 29800
+    points: 1
+  '298':
+    exp: 29900
+    points: 1
+  '299':
+    exp: 30000
+    points: 1
+  '300':
+    exp: 30100
+    points: 1

@@ -1,0 +1,15 @@
+LogMessage:
+  Reload: '§aRe-read the configuration file.'
+  StorageEquipment: '§aStore player equipment information.'
+  LoadFancyCore: '§aLoaded FancyCore.'
+  LoadFancyMobs: '§aLoaded FancyMobs.'
+  UnLoadFancyMobs:
+    - '§4*** FancyMobs is not installed or not enabled. ***'
+    - '§4*** FancyClasses will be disabled. ***'
+  LoadFancyAction: '§aLoaded FancyAction.'
+  UnLoadFancyAction:
+    - '§4*** FancyAction is not installed or not enabled. ***'
+    - '§4*** FancyClasses will be disabled. ***'
+OpMessage:
+  Reload: '§e[FancyClasses] §aRe-read the configuration file.'
+Title: '䆍                      Equipment'

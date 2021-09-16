@@ -1,0 +1,15 @@
+LogMessage:
+  Reload: '§aLeia novamente o arquivo de configuração.'
+  StorageEquipment: '§aArmazene as informações do equipamento do jogador.'
+  LoadFancyCore: '§aFancyCore carregado.'
+  LoadFancyMobs: '§aFancyMobs carregado.'
+  UnLoadFancyMobs:
+    - '§4*** FancyMobs não está instalado ou não está habilitado. ***'
+    - '§4*** FancyClasses será desativado. ***'
+  LoadFancyAction: '§aFancyAction carregado.'
+  UnLoadFancyAction:
+    - '§4*** FancyAction não está instalado ou não está habilitado. ***'
+    - '§4*** FancyClasses será desativado. ***'
+OpMessage:
+  Reload: '§e[FancyClasses] §aLeia novamente o arquivo de configuração.'
+Title: '䆍                      Equipment'

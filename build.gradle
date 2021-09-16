@@ -24,10 +24,25 @@ repositories {
 
 dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
+
+    compileOnly fileTree(dir: 'lib', include: ['FancyCore-1.1.11.jar'])
+    compileOnly fileTree(dir: 'lib', include: ['FancyMobs-1.1.6.jar'])
+    compileOnly fileTree(dir: 'lib', include: ['FancyAction-1.1.1.jar'])
+
 }
 
 processResources {
+    filteringCharset = "UTF-8"
     from(sourceSets.main.resources.srcDirs) {
         filter ReplaceTokens, tokens: [version: version]
     }
 }
+
+compileJava.options.encoding = 'UTF-8'
+
+task copyJar(type: Copy) {
+    from jar
+    into 'C:/Users/Gary/Desktop/1.16.5/plugins'
+}
+
+build.finalizedBy copyJar

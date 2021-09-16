@@ -1,0 +1,322 @@
+#基礎等級(每個玩家都會有的等級)
+#Base level(A level that every player will have)
+Point:
+  Str:
+    base: 1
+  Agi:
+    base: 1
+  Vit:
+    base: 1
+  Int:
+    base: 1
+  Dex:
+    base: 1
+  Luk:
+    base: 1
+
+
+#初始等級1
+#升級到2級需要80點經驗
+#1級升到2級，獲得2點點數。
+#Initial level 1
+#80 experience points are required to upgrade to level 2
+#Upgrade from level 1 to level 2 and get 2 points.
+level:
+  1:
+    exp: 80
+    points: 2
+  2:
+    exp: 160
+    points: 3
+  3:
+    exp: 270
+    points: 3
+  4:
+    exp: 370
+    points: 3
+  5:
+    exp: 560
+    points: 3
+  6:
+    exp: 800
+    points: 4
+  7:
+    exp: 1340
+    points: 4
+  8:
+    exp: 1940
+    points: 4
+  9:
+    exp: 2740
+    points: 4
+  10:
+    exp: 7690
+    points: 4
+  11:
+    exp: 10250
+    points: 4
+  12:
+    exp: 12810
+    points: 5
+  13:
+    exp: 15370
+    points: 5
+  14:
+    exp: 17930
+    points: 5
+  15:
+    exp: 30740
+    points: 5
+  16:
+    exp: 35860
+    points: 5
+  17:
+    exp: 40990
+    points: 5
+  18:
+    exp: 46110
+    points: 6
+  19:
+    exp: 51240
+    points: 6
+  20:
+    exp: 66610
+    points: 6
+  21:
+    exp: 74290
+    points: 6
+  22:
+    exp: 81980
+    points: 6
+  23:
+    exp: 89660
+    points: 7
+  24:
+    exp: 97350
+    points: 7
+  25:
+    exp: 140900
+    points: 7
+  26:
+    exp: 143460
+    points: 7
+  27:
+    exp: 148640
+    points: 7
+  28:
+    exp: 154440
+    points: 8
+  29:
+    exp: 162170
+    points: 8
+  30:
+    exp: 171830
+    points: 8
+  31:
+    exp: 183420
+    points: 8
+  32:
+    exp: 196950
+    points: 9
+  33:
+    exp: 212410
+    points: 9
+  34:
+    exp: 229800
+    points: 9
+  35:
+    exp: 249120
+    points: 9
+  36:
+    exp: 270380
+    points: 10
+  37:
+    exp: 293560
+    points: 10
+  38:
+    exp: 318680
+    points: 10
+  39:
+    exp: 345740
+    points: 10
+  40:
+    exp: 359900
+    points: 11
+  41:
+    exp: 396610
+    points: 11
+  42:
+    exp: 440880
+    points: 11
+  43:
+    exp: 492710
+    points: 11
+  44:
+    exp: 552090
+    points: 12
+  45:
+    exp: 619030
+    points: 12
+  46:
+    exp: 693530
+    points: 12
+  47:
+    exp: 775590
+    points: 12
+  48:
+    exp: 865210
+    points: 13
+  49:
+    exp: 962380
+    points: 13
+  50:
+    exp: 1067110
+    points: 13
+  51:
+    exp: 1179400
+    points: 13
+  52:
+    exp: 1299250
+    points: 14
+  53:
+    exp: 1426660
+    points: 14
+  54:
+    exp: 1561620
+    points: 14
+  55:
+    exp: 1704140
+    points: 14
+  56:
+    exp: 1854220
+    points: 15
+  57:
+    exp: 2011860
+    points: 15
+  58:
+    exp: 2177050
+    points: 15
+  59:
+    exp: 2349810
+    points: 15
+  60:
+    exp: 2530120
+    points: 16
+  61:
+    exp: 2717990
+    points: 16
+  62:
+    exp: 2913410
+    points: 16
+  63:
+    exp: 3116400
+    points: 16
+  64:
+    exp: 3326940
+    points: 17
+  65:
+    exp: 3545040
+    points: 17
+  66:
+    exp: 3770700
+    points: 17
+  67:
+    exp: 4003920
+    points: 17
+  68:
+    exp: 4244700
+    points: 18
+  69:
+    exp: 4493030
+    points: 18
+  70:
+    exp: 4987450
+    points: 18
+  71:
+    exp: 5356520
+    points: 18
+  72:
+    exp: 5760500
+    points: 19
+  73:
+    exp: 6199400
+    points: 19
+  74:
+    exp: 6673200
+    points: 19
+  75:
+    exp: 7181920
+    points: 19
+  76:
+    exp: 7725550
+    points: 20
+  77:
+    exp: 8304100
+    points: 20
+  78:
+    exp: 8917550
+    points: 20
+  79:
+    exp: 9565920
+    points: 20
+  80:
+    exp: 10249200
+    points: 21
+  81:
+    exp: 13504520
+    points: 21
+  82:
+    exp: 16591270
+    points: 21
+  83:
+    exp: 19678020
+    points: 21
+  84:
+    exp: 22764770
+    points: 22
+  85:
+    exp: 25851520
+    points: 22
+  86:
+    exp: 28938270
+    points: 22
+  87:
+    exp: 32025020
+    points: 22
+  88:
+    exp: 35111760
+    points: 23
+  89:
+    exp: 38198510
+    points: 23
+  90:
+    exp: 58862940
+    points: 23
+  91:
+    exp: 77110460
+    points: 23
+  92:
+    exp: 95357970
+    points: 24
+  93:
+    exp: 113605480
+    points: 24
+  94:
+    exp: 131852990
+    points: 24
+  95:
+    exp: 150331400
+    points: 24
+  96:
+    exp: 169874480
+    points: 25
+  97:
+    exp: 190920870
+    points: 25
+  98:
+    exp: 213470580
+    points: 25
+  99: 
+    exp: 0
+    points: 0
+

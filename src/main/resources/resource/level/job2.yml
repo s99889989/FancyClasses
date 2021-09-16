@@ -1,0 +1,124 @@
+level:
+  '0':
+    exp: 5810
+    points: 1
+  '1':
+    exp: 7560
+    points: 1
+  '2':
+    exp: 9300
+    points: 1
+  '3':
+    exp: 11040
+    points: 1
+  '4':
+    exp: 12790
+    points: 1
+  '5':
+    exp: 14530
+    points: 1
+  '6':
+    exp: 23250
+    points: 1
+  '7':
+    exp: 31960
+    points: 1
+  '8':
+    exp: 40680
+    points: 1
+  '9':
+    exp: 72650
+    points: 1
+  '10':
+    exp: 107520
+    points: 1
+  '11':
+    exp: 145290
+    points: 1
+  '12':
+    exp: 185970
+    points: 1
+  '13':
+    exp: 229560
+    points: 1
+  '14':
+    exp: 276050
+    points: 1
+  '15':
+    exp: 325450
+    points: 1
+  '16':
+    exp: 377760
+    points: 1
+  '17':
+    exp: 432970
+    points: 1
+  '18':
+    exp: 491080
+    points: 1
+  '19':
+    exp: 552110
+    points: 1
+  '20':
+    exp: 616040
+    points: 1
+  '21':
+    exp: 682870
+    points: 1
+  '22':
+    exp: 752610
+    points: 1
+  '23':
+    exp: 825260
+    points: 1
+  '24':
+    exp: 900810
+    points: 1
+  '25':
+    exp: 979260
+    points: 1
+  '26':
+    exp: 1060630
+    points: 1
+  '27':
+    exp: 1144900
+    points: 1
+  '28':
+    exp: 1232070
+    points: 1
+  '29':
+    exp: 1322150
+    points: 1
+  '30':
+    exp: 1415140
+    points: 1
+  '31':
+    exp: 1511030
+    points: 1
+  '32':
+    exp: 1609830
+    points: 1
+  '33':
+    exp: 1711530
+    points: 1
+  '34':
+    exp: 1816140
+    points: 1
+  '35':
+    exp: 1923660
+    points: 1
+  '36':
+    exp: 2034080
+    points: 1
+  '37':
+    exp: 2147410
+    points: 1
+  '38':
+    exp: 2263640
+    points: 1
+  '39':
+    exp: 2382780
+    points: 1
+  '40':
+    exp: 0
+    points: 0

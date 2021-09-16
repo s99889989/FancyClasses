@@ -1,0 +1,15 @@
+LogMessage:
+  Reload: '§a重新讀取設定檔。'
+  StorageEquipment: '§a儲存玩家裝備資料。'
+  LoadFancyCore: '§aFancyCore 已加載。'
+  LoadFancyMobs: '§aFancyMobs 已加載。'
+  UnLoadFancyMobs:
+    - '§4*** FancyMobs未安裝或未啟用。 ***'
+    - '§4*** FancyClasses將被卸載。 ***'
+  LoadFancyAction: '§aFancyAction 已加載。'
+  UnLoadFancyAction:
+    - '§4*** FancyAction未安裝或未啟用。 ***'
+    - '§4*** FancyClasses將被卸載。 ***'
+OpMessage:
+  Reload: '§e[FancyClasses] §a重新讀取設定檔。'
+Title: '䆍                      裝備'

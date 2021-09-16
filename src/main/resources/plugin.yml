@@ -1,6 +1,12 @@
 name: FancyClasses
 version: @version@
 main: com.daxton.fancyclasses.FancyClasses
-api-version: 1.17
+api-version: 1.13
 prefix: FancyClasses
+softdepend: [FancyCore, FancyMobs, FancyAction]
 authors: [ s99889989 ]
+description: Customize combat occupations.
+commands:
+  fancyclasses:
+    description: Basic instructions.
+    aliases: fclasses

@@ -72,6 +72,14 @@ public class ClassPlaceholder {
 					return playerClassData.getBind(Integer.parseInt(key));
 				}
 			}
+			//目前魔量
+			if(inputString.toLowerCase().contains("<fc_class_nowmana")){
+				return String.valueOf(playerClassData.nowMana);
+			}
+			//最高魔量
+			if(inputString.toLowerCase().contains("<fc_class_maxmana")){
+				return String.valueOf(playerClassData.maxMana);
+			}
 		}
 		return "0";
 	}

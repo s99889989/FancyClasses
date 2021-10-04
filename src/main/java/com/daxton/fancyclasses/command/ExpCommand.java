@@ -13,17 +13,22 @@ public class ExpCommand {
 	public static void exp(String[] args){
 
 		if(args.length == 5){
-			if(args[0].equals("exp") && args[1].equals("give")){
-				Player player = Bukkit.getPlayer(args[4]);
-				if(player != null){
-					UUID uuid = player.getUniqueId();
-					PlayerClassData playerClassData = ClassesManager.player_ClassData_Map.get(uuid);
+			Player player = Bukkit.getPlayer(args[4]);
+			if(player != null) {
+				UUID uuid = player.getUniqueId();
+				PlayerClassData playerClassData = ClassesManager.player_ClassData_Map.get(uuid);
+				if(args[1].equals("exp")){
 					if(NumberJudgment.isNumber(args[3])){
 						playerClassData.addExp(args[2], Integer.parseInt(args[3]));
 					}
 				}
-
+				if(args[1].equals("point")){
+					if(NumberJudgment.isNumber(args[3])){
+						playerClassData.addPoint(args[2], Integer.parseInt(args[3]));
+					}
+				}
 			}
+
 		}
 
 	}

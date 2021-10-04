@@ -2,6 +2,7 @@ package com.daxton.fancyclasses.gui;
 
 import com.daxton.fancyclasses.api.dataplayer.PlayerClassData;
 import com.daxton.fancyclasses.gui.attributes.AttrShow;
+import com.daxton.fancyclasses.gui.main.InfoShow;
 import com.daxton.fancyclasses.gui.skill.SkillType;
 import com.daxton.fancyclasses.manager.ClassesManager;
 import com.daxton.fancycore.api.gui.GUI;
@@ -26,9 +27,11 @@ public class MainGui {
 				setSize(54).
 				setTitle(languageConfig.getString("Main.Title")).
 				build();
-
+			InfoShow infoShow = new InfoShow(player, gui);
+			infoShow.show();
 			GuiButton playerInfoButton = GuiButton.ButtonBuilder.getInstance().
-				setItemStack(GuiItem.valueOf(player, languageConfig, "Main.PlayerInfo")).
+				setItemStack(GuiItem.valueOf(player, languageConfig, "Main.PlayerInfo.Main")).
+				setGuiAction(infoShow).
 				build();
 
 			gui.setButton(playerInfoButton, 1, 1);

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ClassConfig {
 
-	public static FileConfiguration createConfig(PlayerClassData playerClassData, String uuid){
+	public static FileConfiguration createConfig(PlayerClassData playerClassData, String uuid, String defaultClassType){
 		File file = new File(FancyClasses.fancyClasses.getDataFolder(), "playerdata/"+uuid+".yml");
 
 		if(!file.exists()){
@@ -21,12 +21,12 @@ public class ClassConfig {
 			try {
 				if(file.createNewFile()){
 
-					FileConfiguration deConfig = FileConfig.config_Map.get("class/Default.yml");
+					FileConfiguration deConfig = FileConfig.config_Map.get("class/"+defaultClassType+".yml");
 
 					FileConfiguration playerConfig = YamlConfiguration.loadConfiguration(file);
 
 					//職業模板
-					playerConfig.set("Class_Type", "Default");
+					playerConfig.set("Class_Type", defaultClassType);
 					//設置職業等級名稱
 					String className = deConfig.getString("Class_Name");
 					playerConfig.set("Class_Name", className);
@@ -46,8 +46,9 @@ public class ClassConfig {
 						SkillConfig.SetSkillConfig(playerConfig, skillFileName);
 					});
 
-
 					FileConfig.config_Map.put("playerdata/"+uuid+".yml", playerConfig);
+
+					FancyClasses.fancyClasses.getLogger().info("建立");
 					playerConfig.save(file);
 				}
 			}catch (IOException exception){
@@ -59,7 +60,10 @@ public class ClassConfig {
 			FileConfiguration playerConfig = FileConfig.config_Map.get("playerdata/"+uuid+".yml");
 
 			playerClassData.className = playerConfig.getString("Class_Name");
-
+			//等級
+			playerClassData.level_Map.clear();
+			playerClassData.exp_Map.clear();
+			playerClassData.point_Map.clear();
 			for(String levelKey : playerConfig.getConfigurationSection("level").getKeys(false)){
 				int now_level = playerConfig.getInt("level."+levelKey+".level");
 				int now_exp = playerConfig.getInt("level."+levelKey+".exp");
@@ -71,12 +75,14 @@ public class ClassConfig {
 				playerClassData.point_Map.put(levelKey, now_point);
 				playerClassData.point_Map.put(levelKey+"_max", max_point);
 			}
-
+			//屬性
+			playerClassData.attribute_Map.clear();
 			for(String attributeKey : playerConfig.getConfigurationSection("attribute").getKeys(false)){
 				int attValue = playerConfig.getInt("attribute."+attributeKey);
 				playerClassData.attribute_Map.put(attributeKey, attValue);
 			}
-
+			//綁定
+			playerClassData.bind = new String[8];
 			for(String bindKey : playerConfig.getConfigurationSection("bind").getKeys(false)){
 				String bindName = playerConfig.getString("bind."+bindKey);
 				if(!bindName.equalsIgnoreCase("null")){
@@ -84,13 +90,19 @@ public class ClassConfig {
 					playerClassData.bind[bindNumber] = bindName;
 				}
 			}
-			for(String skillName : playerConfig.getConfigurationSection("skill").getKeys(false)){
-				int skill_level = playerConfig.getInt("skill."+skillName+".level");
-				int skill_use = playerConfig.getInt("skill."+skillName+".use");
+			//技能
+			playerClassData.skill_Map.clear();
+			playerClassData.use_Map.clear();
+			if(playerConfig.contains("skill")){
+				for(String skillName : playerConfig.getConfigurationSection("skill").getKeys(false)){
+					int skill_level = playerConfig.getInt("skill."+skillName+".level");
+					int skill_use = playerConfig.getInt("skill."+skillName+".use");
 
-				playerClassData.skill_Map.put(skillName, skill_level);
-				playerClassData.use_Map.put(skillName, skill_use);
+					playerClassData.skill_Map.put(skillName, skill_level);
+					playerClassData.use_Map.put(skillName, skill_use);
+				}
 			}
+
 		}
 
 		return FileConfig.config_Map.get("playerdata/"+uuid+".yml");
@@ -199,12 +211,22 @@ public class ClassConfig {
 		List<String> levelList = new ArrayList<>(baseLevelConfig.getConfigurationSection("level").getKeys(false));
 
 		String min = levelList.get(0);
+		if(!playerConfig.contains("level."+levelName+".level")){
+			playerConfig.set("level."+levelName+".level", Integer.parseInt(min));
+		}
 
-		playerConfig.set("level."+levelName+".level", Integer.parseInt(min));
+		if(!playerConfig.contains("level."+levelName+".exp")){
+			playerConfig.set("level."+levelName+".exp", 0);
+		}
+		if(!playerConfig.contains("level."+levelName+".point")){
+			playerConfig.set("level."+levelName+".point", 0);
+		}
+		if(!playerConfig.contains("level."+levelName+".point_max")){
+			playerConfig.set("level."+levelName+".point_max", 0);
+		}
 
-		playerConfig.set("level."+levelName+".exp", 0);
-		playerConfig.set("level."+levelName+".point", 0);
-		playerConfig.set("level."+levelName+".point_max", 0);
+
+
 	}
 
 }

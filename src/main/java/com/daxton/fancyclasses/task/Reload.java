@@ -4,6 +4,7 @@ package com.daxton.fancyclasses.task;
 import com.daxton.fancyclasses.config.FileConfig;
 import com.daxton.fancyclasses.config.MobConfig;
 import com.daxton.fancyclasses.config.MythicMobConfig;
+import com.daxton.fancyclasses.other.ManaReg;
 import com.daxton.fancyclasses.other.SetDefaultData;
 
 public class Reload {
@@ -19,6 +20,8 @@ public class Reload {
         SetDefaultData.level();
         //設置技能基礎值
         SetDefaultData.skill();
+        //回魔
+        ManaReg.execute();
     }
 
 }

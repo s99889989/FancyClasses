@@ -4,7 +4,16 @@ import com.daxton.fancyclasses.FancyClasses;
 import com.daxton.fancyclasses.config.FileConfig;
 import com.daxton.fancyclasses.manager.ClassesManager;
 import com.daxton.fancyclasses.skill.SkillBar;
+import com.daxton.fancycore.api.character.conversion.StringConversion;
+import com.daxton.fancycore.api.character.stringconversion.ConversionMain;
 import com.daxton.fancycore.api.gui.GUI;
+import com.daxton.fancycore.manager.PlayerManagerCore;
+import com.daxton.fancycore.other.entity.BukkitAttributeSet;
+import com.daxton.fancycore.other.playerdata.PlayerDataFancy;
+import com.daxton.fancycore.other.taskaction.MapGetKey;
+import com.daxton.fancycore.other.taskaction.StringToMap;
+import com.daxton.fancycore.task.TaskAction;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -12,10 +21,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 public class PlayerClassData{
+
+	final Player player;
 
 	final UUID uuid;
 
@@ -36,20 +48,124 @@ public class PlayerClassData{
 	public String[] bind = new String[8];
 	public String selectSkill;
 	public SkillBar skillBar;
+	//技能使用時間
 	public BukkitRunnable castTime;
+	//技能使用後延遲
 	public BukkitRunnable castDelay;
-
+	//技能CD
+	public Map<String, BukkitRunnable> castDown = new HashMap<>();
+	public Map<String, Integer> castDownTime = new HashMap<>();
 	//Gui
 	public GUI gui;
+
+	public double nowMana = 10;
+	public double maxMana = 10;
 
 	public boolean player_F;
 	//建立初始玩家設定
 	public PlayerClassData(Player player){
+		this.player = player;
 		this.uuid = player.getUniqueId();
-		createConfig();
+		//建立檔案 和 設置等級
+		ClassConfig.createConfig(this, uuid.toString(), "Default");
+		//設置基礎屬性
 		setDefaultCustomValue();
+		//設置技能欄
 		skillBar = new SkillBar(player, this);
+		//設置初始魔量
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				setDefaultMana();
+				setDefaultCoreAttr();
+			}
+		}.runTaskLater(FancyClasses.fancyClasses, 5);
+		//執行被動技能
+		runPassiveSkill();
 	}
+	//執行被動技能
+	public void runPassiveSkill(){
+		FileConfiguration playerConfig = FileConfig.config_Map.get("playerdata/"+uuid+".yml");
+		PlayerDataFancy playerDataFancy = PlayerManagerCore.player_Data_Map.get(player.getUniqueId());
+		if(playerDataFancy != null){
+			if(playerConfig.contains("skill")){
+				playerConfig.getConfigurationSection("skill").getKeys(false).forEach(haveSkillName->{
+					String skillConfigString = ClassesManager.skill_Config_Map.get(haveSkillName);
+					FileConfiguration skillConfig = FileConfig.config_Map.get(skillConfigString);
+					boolean passiveSkill = skillConfig.getBoolean("Skills."+haveSkillName+".PassiveSkill");
+					if(passiveSkill){
+						int use = getSkillUse(haveSkillName);
+						if(use > 0){
+							//FancyClasses.fancyClasses.getLogger().info(haveSkillName+" : "+use);
+							List<String> actionList = skillConfig.getStringList("Skills."+haveSkillName+".Action");
+
+							List<Map<String, String>> actionMapList = StringToMap.toActiomMapList(actionList);
+							actionMapList.forEach(stringStringMap->{
+								MapGetKey mapGetKey =  new MapGetKey(stringStringMap, player, null);
+								String targetString = mapGetKey.getString(new String[]{"triggerkey"}, "");
+								if(targetString.equalsIgnoreCase("~onjoin")){
+									TaskAction.execute(player, null, stringStringMap, null, (int)(Math.random()*Integer.MAX_VALUE)+"");
+								}
+							});
+							playerDataFancy.class_Action_Map.put(haveSkillName, actionMapList);
+						}
+
+					}
+
+				});
+			}
+
+		}
+
+
+	}
+
+	//設置初始血量
+	public void setDefaultCoreAttr(){
+		FileConfiguration coreConfig = com.daxton.fancycore.config.FileConfig.config_Map.get("Other/CustomCore.yml");
+		//血量愛心數量修改
+		boolean healthScaleEnable = coreConfig.getBoolean("HealthScale.enable");
+		if(healthScaleEnable){
+			double healthScale = coreConfig.getDouble("HealthScale.scale");
+			player.setHealthScale(healthScale);
+		}
+
+		//血量修改
+		boolean healthEnable = coreConfig.getBoolean("Health.enable");
+		if(healthEnable){
+			String healthString = coreConfig.getString("Health.formula");
+			double healthValue = StringConversion.getDouble(player, null, 0, healthString);
+			//FancyClasses.fancyClasses.getLogger().info("血量+"+healthValue);
+			BukkitAttributeSet.removeAddAttribute(player, "GENERIC_MAX_HEALTH", "ADD_NUMBER", healthValue, "class");
+		}else {
+			BukkitAttributeSet.removeAttribute(player, "GENERIC_MAX_HEALTH", "class");
+		}
+
+	}
+
+	//設置初始魔量
+	public void setDefaultMana(){
+		FileConfiguration coreConfig = com.daxton.fancycore.config.FileConfig.config_Map.get("Other/CustomCore.yml");
+		String manaString = coreConfig.getString("Max_Mana.formula");
+		double manaValue = StringConversion.getDouble(player, null, 0, manaString);
+		FileConfiguration playerConfig = FileConfig.config_Map.get("playerdata/"+uuid+".yml");
+		maxMana = manaValue;
+		if(playerConfig.contains("nowMana")){
+			nowMana = playerConfig.getDouble("nowMana");
+			playerConfig.set("nowMana", null);
+		}else {
+			nowMana = maxMana;
+		}
+		String manaRegString = coreConfig.getString("Mana_Regeneration.formula");
+		double manaRegValue = StringConversion.getDouble(player, null, 0, manaRegString);
+		//FancyClasses.fancyClasses.getLogger().info(manaRegString+" : "+manaRegValue);
+	}
+	//儲存魔量
+	public void saveMana(){
+		FileConfiguration playerConfig = FileConfig.config_Map.get("playerdata/"+uuid+".yml");
+		playerConfig.set("nowMana", nowMana);
+	}
+
 	//登入啟動全部自訂值
 	public void setDefaultCustomValue(){
 		AttributeConfig.setDefaultValue(uuid, attribute_Map);
@@ -180,7 +296,44 @@ public class PlayerClassData{
 					use_Map.put(skillName, nowLevel);
 				}
 			}
+			if(nowLevel > 0){
+				PlayerDataFancy playerDataFancy = PlayerManagerCore.player_Data_Map.get(player.getUniqueId());
+				if(playerDataFancy != null){
+					if(!playerDataFancy.class_Action_Map.containsKey(skillName)){
+						String skillConfigString = ClassesManager.skill_Config_Map.get(skillName);
+						FileConfiguration skillConfig = FileConfig.config_Map.get(skillConfigString);
+						List<String> actionList = skillConfig.getStringList("Skills."+skillName+".Action");
 
+						List<Map<String, String>> actionMapList = StringToMap.toActiomMapList(actionList);
+						actionMapList.forEach(stringStringMap->{
+							MapGetKey mapGetKey =  new MapGetKey(stringStringMap, player, null);
+							String targetString = mapGetKey.getString(new String[]{"triggerkey"}, "");
+							if(targetString.equalsIgnoreCase("~onjoin")){
+								TaskAction.execute(player, null, stringStringMap, null, (int)(Math.random()*Integer.MAX_VALUE)+"");
+							}
+						});
+						playerDataFancy.class_Action_Map.put(skillName, actionMapList);
+					}
+				}
+			}
+			if(nowLevel == 0){
+				PlayerDataFancy playerDataFancy = PlayerManagerCore.player_Data_Map.get(player.getUniqueId());
+				if(playerDataFancy != null){
+					if(playerDataFancy.class_Action_Map.containsKey(skillName)){
+						List<Map<String, String>> actionMapList = playerDataFancy.class_Action_Map.get(skillName);
+						actionMapList.forEach(stringStringMap->{
+							MapGetKey mapGetKey =  new MapGetKey(stringStringMap, player, null);
+							String targetString = mapGetKey.getString(new String[]{"triggerkey"}, "");
+							//FancyClasses.fancyClasses.getLogger().info("觸發: "+targetString);
+							if(targetString.equalsIgnoreCase("~onquit") || targetString.equalsIgnoreCase("~eqmchange")){
+								TaskAction.execute(player, null, stringStringMap, null, (int)(Math.random()*Integer.MAX_VALUE)+"");
+							}
+						});
+						playerDataFancy.class_Action_Map.remove(skillName);
+					}
+
+				}
+			}
 		}
 
 
@@ -273,23 +426,29 @@ public class PlayerClassData{
 	public void addExp(String expName, int add){
 		if(exp_Map.containsKey(expName)){
 			int nowExp = getExp(expName);
-			int maxExp = ClassesManager.need_Exp_Map.get(expName+getLevel(expName));
-			nowExp += add;
-			if(nowExp < 0){
-				nowExp = 0;
+			if(ClassesManager.need_Exp_Map.containsKey(expName+getLevel(expName))){
+				int maxExp = ClassesManager.need_Exp_Map.get(expName+getLevel(expName));
+				nowExp += add;
+				if(nowExp < 0){
+					nowExp = 0;
+				}
+				while (nowExp >= maxExp){
+					//FancyClasses.fancyClasses.getLogger().info("前: "+nowExp+":"+maxExp);
+					nowExp -= maxExp;
+
+					addLevel(expName, 1);
+					addPoint(expName, ClassConfig.getGivePoint(expName, (getLevel(expName)-1)));
+
+					maxExp = ClassesManager.need_Exp_Map.get(expName+getLevel(expName));
+					if(maxExp == 0){
+						nowExp = 0;
+						break;
+					}
+					//FancyClasses.fancyClasses.getLogger().info("後: "+nowExp+":"+maxExp);
+
+				}
+				exp_Map.put(expName, nowExp);
 			}
-			while (nowExp >= maxExp){
-				//FancyClasses.fancyClasses.getLogger().info("前: "+nowExp+":"+maxExp);
-				nowExp -= maxExp;
-
-				addLevel(expName, 1);
-				addPoint(expName, ClassConfig.getGivePoint(expName, (getLevel(expName)-1)));
-
-				maxExp = ClassesManager.need_Exp_Map.get(expName+getLevel(expName));
-				//FancyClasses.fancyClasses.getLogger().info("後: "+nowExp+":"+maxExp);
-
-			}
-			exp_Map.put(expName, nowExp);
 		}
 	}
 	//獲取目前經驗
@@ -330,7 +489,7 @@ public class PlayerClassData{
 				nowLevel = 0;
 			}
 			if(nowLevel > maxLevel){
-				nowLevel = maxLevel;
+				return;
 			}
 			level_Map.put(levelName, nowLevel);
 		}
@@ -353,10 +512,6 @@ public class PlayerClassData{
 	}
 
 	//---------------------------------------------------------------------------------------------------//
-	//建立檔案 和 設置等級
-	public void createConfig(){
-		ClassConfig.createConfig(this, uuid.toString());
-	}
 
 	//儲存等級、經驗
 	public void saveConfig(){
@@ -380,6 +535,10 @@ public class PlayerClassData{
 
 		skill_Map.forEach((skill, integer) -> {
 			playerConfig.set("skill."+skill+".level", integer);
+		});
+
+		attribute_Map.forEach((attr, integer) -> {
+			playerConfig.set("attribute."+attr, integer);
 		});
 
 		use_Map.forEach((use, integer) -> {

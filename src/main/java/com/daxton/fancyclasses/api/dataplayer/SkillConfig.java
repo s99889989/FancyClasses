@@ -35,8 +35,15 @@ public class SkillConfig {
 
 		for(String skillName : skillConfig.getConfigurationSection("Skills").getKeys(false)){
 			int base = skillConfig.getInt("Skills."+skillName+".Base");
-			playerConfig.set("skill."+skillName+".level", base);
-			playerConfig.set("skill."+skillName+".use", 0);
+			if(!playerConfig.contains("skill."+skillName+".level")){
+				playerConfig.set("skill."+skillName+".level", base);
+			}
+			if(!playerConfig.contains("skill."+skillName+".use")){
+				playerConfig.set("skill."+skillName+".use", 0);
+			}
+
+
+
 		}
 	}
 

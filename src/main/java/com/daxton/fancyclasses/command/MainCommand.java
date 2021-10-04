@@ -33,9 +33,16 @@ public class MainCommand implements CommandExecutor {
         if(sender instanceof Player && !sender.isOp()){
             return true;
         }
+        //轉職指令
+        if(args.length > 1) {
+            if(args[0].equalsIgnoreCase("class")){
+                ClassCommand.execute(args);
+            }
+        }
+        //經驗指令
         if(sender instanceof Player){
             if(args.length > 1) {
-                if(args[0].equalsIgnoreCase("exp")){
+                if(args[0].equalsIgnoreCase("give")){
                     ExpCommand.exp(args);
                 }
             }

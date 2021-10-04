@@ -30,6 +30,7 @@ public class PlayerListener implements Listener {
 
         PlayerClassData playerClassData = ClassesManager.player_ClassData_Map.get(uuid);
         playerClassData.saveConfig();
+        playerClassData.saveMana();
         ClassesManager.player_ClassData_Map.remove(uuid);
 
     }
@@ -39,7 +40,7 @@ public class PlayerListener implements Listener {
     public void onSwapHand(PlayerSwapHandItemsEvent event){
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
-
+        event.setCancelled(true);
         PlayerClassData playerClassData = ClassesManager.player_ClassData_Map.get(uuid);
 
 

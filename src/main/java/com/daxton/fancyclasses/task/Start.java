@@ -5,6 +5,7 @@ import com.daxton.fancyclasses.config.MobConfig;
 import com.daxton.fancyclasses.config.MythicMobConfig;
 
 import com.daxton.fancyclasses.other.CreateFile;
+import com.daxton.fancyclasses.other.ManaReg;
 import com.daxton.fancyclasses.other.SetDefaultData;
 
 public class Start {
@@ -18,7 +19,8 @@ public class Start {
         SetDefaultData.level();
         //設置技能基礎值
         SetDefaultData.skill();
-
+        //魔力回復
+        ManaReg.execute();
 
         //CreateFile.execute();
 

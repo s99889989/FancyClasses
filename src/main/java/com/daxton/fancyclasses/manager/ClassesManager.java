@@ -23,4 +23,5 @@ public class ClassesManager {
 	public static Map<String, String> skill_Config_Map = new HashMap<>();
 
 
+
 }

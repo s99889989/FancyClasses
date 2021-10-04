@@ -4,6 +4,7 @@ import com.daxton.fancyclasses.FancyClasses;
 import com.daxton.fancyclasses.api.dataplayer.PlayerClassData;
 import com.daxton.fancyclasses.config.FileConfig;
 import com.daxton.fancyclasses.manager.ClassesManager;
+import com.daxton.fancycore.api.character.conversion.StringConversion;
 import com.daxton.fancycore.api.gui.GUI;
 import com.daxton.fancycore.api.gui.button.GuiAction;
 import com.daxton.fancycore.api.gui.button.GuiButton;
@@ -16,6 +17,7 @@ import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -44,10 +46,12 @@ public class ChangeSkill implements GuiAction {
 		String pointName = skillConfig.getString("Level");
 
 		int place = slot+1;
+		//升級使用技能
 		if(clickType == ClickType.LEFT){
 			playerClassData.addUseSkill(skillID, 1);
 			changeSkillDisplay(playerClassData, place);
 		}
+		//降級使用技能
 		if(clickType == ClickType.RIGHT){
 			playerClassData.addUseSkill(skillID, -1);
 			changeSkillDisplay(playerClassData, place);
@@ -61,12 +65,17 @@ public class ChangeSkill implements GuiAction {
 		//降級技能
 		if(clickType == ClickType.SHIFT_RIGHT){
 			playerClassData.addSkill(skillID, pointName, -1, true);
+			playerClassData.addUseSkill(skillID, -1);
 			changeSkillTypeDisplay(playerClassData);
 			changeSkillDisplay(playerClassData, place);
 		}
 		//選擇技能
 		if(clickType == ClickType.MIDDLE){
-			playerClassData.selectSkill = skillType+"."+skillID;
+			boolean passiveSkill = skillConfig.getBoolean("Skills."+skillID+".PassiveSkill");
+			if(!passiveSkill){
+				playerClassData.selectSkill = skillType+"."+skillID;
+			}
+
 		}
 	}
 
@@ -135,15 +144,30 @@ public class ChangeSkill implements GuiAction {
 		Map<String, String> nameMap = new HashMap<>();
 		nameMap.put("{name}", skillName);
 		GuiEditItem.replaceName(skillItem, nameMap);
-		//使用技能等級/目前技能等級/最高技能等級
+		//使用技能等級/目前技能等級/最高技能等級/被動技能/吟唱時間/技能延遲/冷却時間/消耗SP
+		Map<String, String> loreMap = new HashMap<>();
 		int useSkill = playerClassData.getSkillUse(skillID);
 		int newSkill = playerClassData.getSkillLevel(skillID);
 		int maxSkill = playerClassData.getMaxSkillLevel(skillID);
-		Map<String, String> loreMap = new HashMap<>();
+		boolean passiveSkill = skillConfig.getBoolean("Skills."+skillID+".PassiveSkill");
+		double distance = StringConversion.getDouble(player, null, 0, skillConfig.getString("Skills."+skillID+".TargetDistance"));
+		int castTime = StringConversion.getInt(player, null, 0, skillConfig.getString("Skills."+skillID+".CastTime"));
+		int castDelay = StringConversion.getInt(player, null, 0, skillConfig.getString("Skills."+skillID+".CastDelay"));
+		int coolDown = StringConversion.getInt(player, null, 0, skillConfig.getString("Skills."+skillID+".CoolDown"));
+		double mana = StringConversion.getDouble(player, null, 0, skillConfig.getString("Skills."+skillID+".Mana"));
 		loreMap.put("{use}", String.valueOf(useSkill));
 		loreMap.put("{now}", String.valueOf(newSkill));
 		loreMap.put("{max}", String.valueOf(maxSkill));
+		loreMap.put("{passive}", String.valueOf(passiveSkill));
+		loreMap.put("{distance}", String.valueOf(distance));
+		loreMap.put("{cast_time}", String.valueOf(castTime));
+		loreMap.put("{cast_delay}", String.valueOf(castDelay));
+		loreMap.put("{cool_down}", String.valueOf(coolDown));
+		loreMap.put("{mana}", String.valueOf(mana));
 		GuiEditItem.replaceLore(skillItem, loreMap);
+		//Lore
+		List<String> skillLore = skillConfig.getStringList("Skills."+skillID+".Lore");
+		GuiEditItem.loreInsert(player, skillItem, "{lore}", skillLore);
 
 		GuiButton skillButton = GuiButton.ButtonBuilder.getInstance().
 			setItemStack(skillItem).

@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
 
 public class TabCommand implements TabCompleter {
 
-    private final String[] subCommands = {"reload", "gui", "exp"};
+    private final String[] subCommands = {"reload", "gui", "give", "class"};
 
-    final String[] number = {"10", "100", "1000", "10000", "100000"};
+    final String[] number = {"10", "100", "1000", "10000", "100000", "1000000"};
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args){
@@ -30,28 +30,43 @@ public class TabCommand implements TabCompleter {
         }
 
         if (args.length == 2){
-            if(args[0].equals("exp")){
-                String[] expArray = {"give"};
+            if(args[0].equals("give")){
+                String[] expArray = {"exp", "point"};
+                commandList = Arrays.stream(expArray).filter(s -> s.startsWith(args[1])).collect(Collectors.toList());
+            }
+            if(args[0].equals("class")){
+                String[] expArray = {"change", "rebirth"};
                 commandList = Arrays.stream(expArray).filter(s -> s.startsWith(args[1])).collect(Collectors.toList());
             }
         }
 
         if (args.length == 3){
-            if(args[0].equals("exp") && args[1].equals("give")){
-                commandList = SearchConfigMap.fileNameList(FileConfig.config_Map, "level/", true);
+            if(args[0].equals("give")){
+                if(args[1].equals("exp") || args[1].equals("point")){
+                    commandList = SearchConfigMap.fileNameList(FileConfig.config_Map, "level/", true);
+                }
+            }
+            if(args[0].equals("class")){
+                commandList = SearchConfigMap.fileNameList(FileConfig.config_Map, "class/", true);
             }
         }
 
         if (args.length == 4){
-            if(args[0].equals("exp") && args[1].equals("give")){
-                commandList = Arrays.stream(number).collect(Collectors.toList());
+            if(args[0].equals("give")){
+                if(args[1].equals("exp") || args[1].equals("point")){
+                    commandList = Arrays.stream(number).collect(Collectors.toList());
+                }
+            }
+            if(args[0].equals("class")){
+                commandList = new ArrayList<>(Bukkit.getOnlinePlayers()).stream().map(HumanEntity::getName).collect(Collectors.toList());
             }
         }
 
         if (args.length == 5){
-            if(args[0].equals("exp") && args[1].equals("give")){
-                commandList = new ArrayList<>(Bukkit.getOnlinePlayers()).stream().map(HumanEntity::getName).collect(Collectors.toList());
-
+            if(args[0].equals("give")){
+                if(args[1].equals("exp") || args[1].equals("point")){
+                    commandList = new ArrayList<>(Bukkit.getOnlinePlayers()).stream().map(HumanEntity::getName).collect(Collectors.toList());
+                }
             }
         }
 
